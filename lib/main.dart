@@ -6,6 +6,7 @@ import 'package:flat_chat/screens/registration_screen.dart';
 import 'package:flat_chat/screens/chat_screen.dart';
 import 'package:flat_chat/screens/main_screen.dart';
 import 'package:flat_chat/screens/forget_screen.dart';
+import 'package:flat_chat/screens/talk_to_us.dart';
 import 'package:flat_chat/constants.dart';
 
 void main() async  {
@@ -19,7 +20,8 @@ class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: MainScreen.id ,
+      home:TalkToUs(),
+      //initialRoute: MainScreen.id ,
       theme: ThemeData(
         textSelectionTheme: TextSelectionThemeData(
             cursorColor: mainAppColor
@@ -32,6 +34,7 @@ class FlashChat extends StatelessWidget {
         RegistrationScreen.id: (context) =>  RegistrationScreen(),
         ForgotPassword.id: (context) =>  ForgotPassword(),
         ChatScreen.id: (context) =>  ChatScreen(),
+
       },
     );
   }
