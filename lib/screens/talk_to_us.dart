@@ -6,6 +6,10 @@ import 'package:flutter_map/flutter_map.dart'; // Suitable for most situations
 import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flat_chat/components/map.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:flat_chat/components/bottom_nav_call.dart';
+import 'package:flat_chat/components/contact_form.dart';
 
 class TalkToUs extends StatefulWidget {
   static String id = 'talk_to_us';
@@ -28,166 +32,89 @@ class _TalkToUsState extends State<TalkToUs> {
       body: SafeArea(
         child: Container(
           height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Container(
-                margin: const EdgeInsets.all(35.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    HeroLogo(imgHeight: 70.0),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        const Text(
-                          'Work hours',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('MON-SUNDAY 10-22'),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: mainAppColor),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            const Text('Location',
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            Center(
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    backgroundColor: mainAppColor),
-                                child: const Text('Google maps'),
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(horizontal: 40),
-                                  backgroundColor: mainAppColor),
-                              child: const Text('Yandex maps'),
-                            )
-                          ],
-                        ),
-                        map(mapController: mapController, currentCenter: currentCenter, currentZoom: currentZoom)
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Text('Talk to us :)',
-                          style: TextStyle(
-                              fontSize: 22,
-                              color: Color(0xFF660935),
-                              fontWeight: FontWeight.w600)),
-                    ),
-                    TextFormField(
-                      onChanged: (value) {
-                        NameSurname = value;
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                          hintText: 'NAME SURNAME'),
-                      //keyboardType: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    TextFormField(
-                      onChanged: (value) {
-                        Mail = value;
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                        hintText: 'MAIL',
-                      ),
-                      //keyboardType: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    TextFormField(
-                      maxLines: 5,
-                      onChanged: (value) {
-                        Mail = value;
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                        hintText: 'Writing part...',
-                      ),
-                      //keyboardType: TextInputType.emailAddress,
-                    ),
-                    ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(horizontal: 40),
-                            backgroundColor: mainAppColor),
-                        child: const Text('send to us')),
-                  ],
-                ),
-              ),
-              Container(
-                height: 80,
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.end,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(35.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: ElevatedButton(
+                      HeroLogo(imgHeight: 70.0),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          const Text(
+                            'Work hours',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ElevatedButton(
                             onPressed: () {},
-                            child: const Text('CALL'),
+                            child: const Text('MON-SUNDAY 10-22'),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: mainAppColor),
                           ),
-                        ),
+                        ],
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: ElevatedButton(
-                              onPressed: () {},
-                              child: const Text('WEBSITE'),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainAppColor)),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Text('Location',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              Center(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 20),
+                                      backgroundColor: mainAppColor),
+                                  child: const Text('Google maps'),
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(horizontal: 20),
+                                    backgroundColor: mainAppColor),
+                                child: const Text('Yandex maps'),
+                              )
+                            ],
+                          ),
+                          map(mapController: mapController, currentCenter: currentCenter, currentZoom: currentZoom)
+                        ],
                       ),
-                      Expanded(
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text('MAIL'),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: mainAppColor)),
-                      ),
-                    ]),
-              )
-            ],
+                      const SizedBox(height: 30),
+                  contact_form()
+                    ],
+                  ),
+                ),
+                BottomNav(Text("CALL"),Text("WEBSITE"),Icon(Icons.arrow_back))
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+
 
 
 

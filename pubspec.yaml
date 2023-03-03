@@ -41,6 +41,9 @@ dependencies:
   email_validator: ^2.1.16
   flutter_map: ^3.1.0
   latlong2: ^0.8.1
+  url_launcher: ^6.1.5
+  flutter_email_sender: ^5.2.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
