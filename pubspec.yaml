@@ -34,9 +34,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   animated_text_kit: ^4.2.2
-  firebase_core: ^2.4.1
-  firebase_auth: ^4.2.5
-  cloud_firestore: ^4.3.1
+  firebase_core: ^2.7.0
+  cloud_firestore: ^4.4.3
   modal_progress_hud_nsn: ^0.3.0
   email_validator: ^2.1.16
   flutter_map: ^3.1.0
@@ -44,6 +43,8 @@ dependencies:
   url_launcher: ^6.1.5
   flutter_email_sender: ^5.2.0
   http: ^0.13.5
+  barcode_widget: ^2.0.3
+
 
 dev_dependencies:
   flutter_test:

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1010250995683",
-    "project_id": "flat-chat-b8113",
-    "storage_bucket": "flat-chat-b8113.appspot.com"
+    "project_number": "62798148032",
+    "project_id": "bekro-cb502",
+    "storage_bucket": "bekro-cb502.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1010250995683:android:020bad131b031e772532d6",
+        "mobilesdk_app_id": "1:62798148032:android:b04d5633d4f31bdb3f5825",
         "android_client_info": {
           "package_name": "com.rasha.flat_chat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1010250995683-n1h3o7g918j98vj8e2c3r95lm0ud9803.apps.googleusercontent.com",
+          "client_id": "62798148032-8aq8hq3kmj73eid7oppgtug1qjkrmbj7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAb0S9JK_jz5kXedfHCcXMsMs4XPTNvt0s"
+          "current_key": "AIzaSyCkYETEhgqPd5bZpEhIKbM6RbY-1oyjLYo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1010250995683-n1h3o7g918j98vj8e2c3r95lm0ud9803.apps.googleusercontent.com",
+              "client_id": "62798148032-8aq8hq3kmj73eid7oppgtug1qjkrmbj7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
