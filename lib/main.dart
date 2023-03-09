@@ -10,24 +10,32 @@ import 'package:flat_chat/screens/talk_to_us.dart';
 import 'package:flat_chat/screens/user_profile.dart';
 import 'package:flat_chat/screens/admin_control_panel.dart';
 import 'package:flat_chat/constants.dart';
+import 'firebase_options.dart';
 import 'screens/admin_control_panel.dart';
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
-void main() async  {
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize Firebase
-  await Firebase.initializeApp(
-options: FirebaseOptions(
-    apiKey: "AIzaSyArpdLDoxSQu-jWsjAJAY83X2WL6nKxV3I",
-    authDomain: "bekro-cb502.firebaseapp.com",
-    projectId: "bekro-cb502",
-    storageBucket: "bekro-cb502.appspot.com",
-    messagingSenderId: "62798148032",
-    appId: "1:62798148032:web:4a8ddbc5c5445fba3f5825",
-    measurementId: "G-F48RW3G3W5")
-  );
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyArpdLDoxSQu-jWsjAJAY83X2WL6nKxV3I",
+            authDomain: "bekro-cb502.firebaseapp.com",
+            projectId: "bekro-cb502",
+            storageBucket: "bekro-cb502.appspot.com",
+            messagingSenderId: "62798148032",
+            appId: "1:62798148032:web:4a8ddbc5c5445fba3f5825",
+            measurementId: "G-F48RW3G3W5")
+    );
+  } else if (Platform.isAndroid) {
+    await Firebase.initializeApp(
+        name: "bekro", options: DefaultFirebaseOptions.currentPlatform);
+  }
+
   runApp(FlashChat());
 }
 
@@ -35,23 +43,20 @@ class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:AdminControlPanel(),
+      home: AdminControlPanel(),
       //initialRoute: MainScreen.id ,
       theme: ThemeData(
-        textSelectionTheme: TextSelectionThemeData(
-            cursorColor: mainAppColor
-        ),
+        textSelectionTheme: TextSelectionThemeData(cursorColor: mainAppColor),
       ),
       routes: {
         MainScreen.id: (context) => MainScreen(),
-        WelcomeScreen.id : (context) =>  WelcomeScreen(),
-        LoginScreen.id: (context) =>  LoginScreen(),
-        RegistrationScreen.id: (context) =>  RegistrationScreen(),
-        ForgotPassword.id: (context) =>  ForgotPassword(),
-        ChatScreen.id: (context) =>  ChatScreen(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+        ForgotPassword.id: (context) => ForgotPassword(),
+        ChatScreen.id: (context) => ChatScreen(),
         AdminControlPanel.id: (context) => AdminControlPanel(),
         UserProfile.id: (context) => UserProfile()
-
       },
     );
   }
